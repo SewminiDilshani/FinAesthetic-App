@@ -1,0 +1,74 @@
+:root {
+    --bg-color: #f0f7f4;
+    --primary-green: #2d6a4f;
+    --accent-green: #b7e4c7;
+    --white: #ffffff;
+    --text-dark: #1b4332;
+    --text-light: #52796f;
+    --error-red: #e76f51;
+    --card-shadow: rgba(45, 106, 79, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --white: #1e1e1e;
+    --text-dark: #e0e0e0;
+    --text-light: #a0a0a0;
+    --accent-green: #2d6a4f;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    display: flex; justify-content: center;
+    min-height: 100vh; padding: 20px;
+}
+
+.app-container { width: 100%; max-width: 400px; }
+
+/* Theme Switcher */
+.theme-switch-wrapper { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+.theme-switch { display: inline-block; height: 26px; position: relative; width: 54px; }
+.theme-switch input { display: none; }
+.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; display: flex; align-items: center; justify-content: space-around; padding: 0 5px; }
+.slider i { font-size: 0.75rem; color: white; }
+.slider:before { background-color: white; bottom: 4px; content: ""; height: 18px; left: 4px; position: absolute; transition: .4s; width: 18px; border-radius: 50%; z-index: 2; }
+input:checked + .slider { background-color: var(--primary-green); }
+input:checked + .slider:before { transform: translateX(28px); }
+
+header { margin-bottom: 20px; text-align: center; }
+.main-balance h1 { font-size: 2.5rem; color: var(--primary-green); font-weight: 800; }
+
+.card { background: var(--white); padding: 20px; border-radius: 24px; margin-bottom: 15px; box-shadow: 0 10px 25px var(--card-shadow); }
+
+/* Progress Bar */
+.progress-bar-bg { width: 100%; height: 10px; background: #e9ecef; border-radius: 10px; margin: 12px 0; overflow: hidden; }
+#progress-fill { width: 0%; height: 100%; background: var(--primary-green); transition: 0.5s ease; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+.stat-card { background: var(--white); padding: 15px; border-radius: 20px; text-align: center; box-shadow: 0 4px 12px var(--card-shadow); }
+
+/* Form Elements */
+input, select { width: 100%; padding: 12px; margin-bottom: 10px; border: 1.5px solid #e9ecef; border-radius: 12px; outline: none; background: var(--white); color: var(--text-dark); }
+#add-btn { width: 100%; padding: 14px; border: none; border-radius: 12px; background: var(--primary-green); color: white; font-weight: 700; cursor: pointer; }
+#add-btn:active { transform: scale(0.98); }
+
+/* History List */
+li { background: var(--white); padding: 15px; border-radius: 16px; display: flex; justify-content: space-between; margin-bottom: 10px; border-left: 4px solid var(--accent-green); box-shadow: 0 2px 8px var(--card-shadow); animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.delete-btn { background: none; border: none; color: #ced4da; cursor: pointer; margin-left: 10px; }
+.delete-btn:hover { color: var(--error-red); transform: scale(1.2); }
+
+.pdf-btn { width: 100%; background: none; border: 1.5px solid var(--primary-green); color: var(--primary-green); padding: 12px; border-radius: 12px; margin-top: 15px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+.pdf-btn:hover { background: var(--primary-green); color: white; }
+
+/* Insight Card */
+.insight-card { background: linear-gradient(135deg, var(--white) 0%, #f0fdf4 100%); border: 1px dashed var(--primary-green); }
+[data-theme="dark"] .insight-card { background: linear-gradient(135deg, #1e1e1e 0%, #142d20 100%); }
+.insight-content { display: flex; align-items: center; gap: 15px; }
+#top-category { font-weight: 700; color: var(--error-red); text-transform: capitalize; }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinAesthetic - Smart Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </label>
+        </div>
+
+        <header>
+            <div class="user-meta">
+                <span>Good Morning,</span>
+                <h3>Sewmini Dilshani 🌿</h3>
+            </div>
+            <div class="main-balance">
+                <p>Available Balance</p>
+                <h1 id="total-balance">Rs. 0.00</h1>
+            </div>
+        </header>
+
+        <div class="card budget-card">
+            <div class="budget-header">
+                <h4>Monthly Budget</h4>
+                <span id="budget-percentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progress-fill"></div>
+            </div>
+            <div class="budget-footer">
+                <p id="budget-status">Set a limit to track spending</p>
+                <button id="set-budget-btn"><i class="fas fa-sliders"></i> Set Limit</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card income">
+                <small>Total Income</small>
+                <h3 id="total-income">Rs. 0</h3>
+            </div>
+            <div class="stat-card expense">
+                <small>Total Expenses</small>
+                <h3 id="total-expense">Rs. 0</h3>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <h4>Spending Analysis</h4>
+            <canvas id="expenseChart"></canvas>
+        </div>
+
+        <div class="card insight-card" id="insight-card">
+            <div class="insight-content">
+                <div class="insight-icon">💡</div>
+                <div>
+                    <h4>Quick Insight</h4>
+                    <p id="insight-text">Most of your money goes to: <span id="top-category">-</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card form-card">
+            <h4>Add Transaction</h4>
+            <form id="finance-form">
+                <input type="text" id="description" placeholder="Description" required>
+                <div class="input-group">
+                    <input type="number" id="amount" placeholder="Amount" required>
+                    <select id="category">
+                        <option value="income">Income 💰</option>
+                        <option value="food">Food 🍔</option>
+                        <option value="transport">Travel 🚗</option>
+                        <option value="shopping">Shop 🛍️</option>
+                        <option value="other">Other ✨</option>
+                    </select>
+                </div>
+                <button type="submit" id="add-btn">Add to Records</button>
+            </form>
+        </div>
+
+        <div class="history-section">
+            <div class="history-header">
+                <h4>Recent History</h4>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search" placeholder="Search...">
+                </div>
+            </div>
+            <ul id="transaction-list"></ul>
+            
+            <button id="export-btn" class="pdf-btn">
+                <i class="fas fa-file-pdf"></i> Download PDF Report
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
